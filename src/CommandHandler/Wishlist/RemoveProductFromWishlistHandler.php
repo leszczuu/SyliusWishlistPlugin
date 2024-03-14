@@ -39,7 +39,6 @@ final class RemoveProductFromWishlistHandler implements MessageHandlerInterface
 
         /** @var ?ProductInterface $product */
         $product = $this->productRepository->find($productId);
-
         /** @var ?WishlistInterface $wishlist */
         $wishlist = $this->wishlistRepository->findByToken($token);
 

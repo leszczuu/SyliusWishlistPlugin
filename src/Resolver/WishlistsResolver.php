@@ -33,7 +33,6 @@ final class WishlistsResolver implements WishlistsResolverInterface
         private TokenUserResolverInterface $tokenUserResolver,
         MessageBusInterface $messageBus
     ) {
-        $this->messageBus = $messageBus;
     }
 
     public function resolve(): array

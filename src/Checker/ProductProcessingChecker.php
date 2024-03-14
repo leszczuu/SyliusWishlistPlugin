@@ -10,7 +10,6 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusWishlistPlugin\Checker;
 
-use BitBag\SyliusWishlistPlugin\Command\Wishlist\WishlistItem;
 use BitBag\SyliusWishlistPlugin\Command\Wishlist\WishlistItemInterface;
 
 final class ProductProcessingChecker implements ProductProcessingCheckerInterface
@@ -27,7 +26,7 @@ final class ProductProcessingChecker implements ProductProcessingCheckerInterfac
         return $this->isInStock($wishlistProduct) && $this->productQuantityChecker->hasPositiveQuantity($cartItem);
     }
 
-    private function isInStock(WishlistItem $wishlistProduct): bool
+    private function isInStock(WishlistItemInterface $wishlistProduct): bool
     {
         if (0 < $wishlistProduct->getOrderItemQuantity()) {
             return true;
