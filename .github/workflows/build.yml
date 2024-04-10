@@ -19,6 +19,7 @@ jobs:
         name: "Sylius ${{ matrix.sylius }}, PHP ${{ matrix.php }}, Symfony ${{ matrix.symfony }}, 
   MySQL ${{ matrix.mysql }}, State Machine Adapter ${{ matrix.state_machine_adapter }}"
 
+<<<<<<< HEAD
         strategy:
             fail-fast: false
             matrix:
@@ -215,3 +216,4 @@ jobs:
                     SLACK_TITLE: Failed build on ${{ github.event.repository.name }} repository
                     SLACK_USERNAME: ${{ secrets.FAILED_BUILD_SLACK_USERNAME }}
                     SLACK_WEBHOOK: ${{ secrets.FAILED_BUILD_SLACK_WEBHOOK }}
+
