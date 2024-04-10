@@ -18,8 +18,6 @@ jobs:
 
         name: "Sylius ${{ matrix.sylius }}, PHP ${{ matrix.php }}, Symfony ${{ matrix.symfony }}, 
   MySQL ${{ matrix.mysql }}, State Machine Adapter ${{ matrix.state_machine_adapter }}"
-
-<<<<<<< HEAD
         strategy:
             fail-fast: false
             matrix:
@@ -29,7 +27,6 @@ jobs:
                 node: ["^14.17.x"]
                 mysql: ["8.0"]
                 state_machine_adapter: ["winzou_state_machine", "symfony_workflow"]
-
                 exclude:
                     -
                         sylius: ~1.12.0

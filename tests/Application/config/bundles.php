@@ -5,6 +5,7 @@ declare(strict_types=1);
 use Sylius\Bundle\CoreBundle\SyliusCoreBundle;
 
 $bundles = [
+
     Symfony\Bundle\FrameworkBundle\FrameworkBundle::class => ['all' => true],
     Symfony\Bundle\MonologBundle\MonologBundle::class => ['all' => true],
     Symfony\Bundle\SecurityBundle\SecurityBundle::class => ['all' => true],
