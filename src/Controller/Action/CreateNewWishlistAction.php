@@ -55,7 +55,7 @@ final class CreateNewWishlistAction
         }
 
         try {
-            if (null !== $channel) {
+            if ($channel instanceof \Sylius\Component\Channel\Model\ChannelInterface) {
                 $createNewWishlist = new CreateNewWishlist($wishlistName, $channel->getCode());
                 $this->commandBus->dispatch($createNewWishlist);
             } else {

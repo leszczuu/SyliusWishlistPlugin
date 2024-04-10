@@ -16,10 +16,6 @@ final class ProductQuantityChecker implements ProductQuantityCheckerInterface
 {
     public function hasPositiveQuantity(OrderItemInterface $product): bool
     {
-        if (0 < $product->getQuantity()) {
-            return true;
-        }
-
-        return false;
+        return 0 < $product->getQuantity();
     }
 }

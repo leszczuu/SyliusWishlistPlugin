@@ -71,7 +71,7 @@ final class WishlistsResolver implements WishlistsResolverInterface
             $channel = null;
         }
 
-        if (0 === count($wishlists)) {
+        if ([] === $wishlists) {
             $createWishlist = new CreateWishlist($wishlistCookieToken, $channel?->getCode());
             /** @var WishlistInterface $wishlist */
             $wishlist = $this->handle($createWishlist);

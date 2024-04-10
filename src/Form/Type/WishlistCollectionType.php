@@ -35,7 +35,7 @@ final class WishlistCollectionType extends AbstractType
         $this->selectedWishlistProductsProcessor = $selectedWishlistProductsProcessor;
     }
 
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('items', CollectionType::class, [
@@ -52,7 +52,9 @@ final class WishlistCollectionType extends AbstractType
             ])
             ->addEventListener(
                 FormEvents::SUBMIT,
-                [$this, 'pickSelectedWishlistItems']
+                function (\Symfony\Component\Form\FormEvent $event) : void {
+                    $this->pickSelectedWishlistItems($event);
+                }
             )
         ;
     }

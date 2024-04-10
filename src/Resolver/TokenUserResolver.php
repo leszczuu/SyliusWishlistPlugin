@@ -18,7 +18,7 @@ final class TokenUserResolver implements TokenUserResolverInterface
 {
     public function resolve(?TokenInterface $token): ?UserInterface
     {
-        if (null === $token) {
+        if (!$token instanceof \Symfony\Component\Security\Core\Authentication\Token\TokenInterface) {
             return null;
         }
 

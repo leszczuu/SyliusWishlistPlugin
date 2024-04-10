@@ -15,10 +15,6 @@ final class WishlistNameChecker implements WishlistNameCheckerInterface
 {
     public function check(string $existingWishlistName, string $wishlistToCreate): bool
     {
-        if ($existingWishlistName == $wishlistToCreate) {
-            return true;
-        }
-
-        return false;
+        return $existingWishlistName === $wishlistToCreate;
     }
 }

@@ -51,7 +51,7 @@ final class CreateNewWishlistHandler implements MessageHandlerInterface
             $wishlists = $this->wishlistRepository->findAllByAnonymous($wishlistCookieToken);
         }
 
-        if ($wishlistCookieToken) {
+        if ($wishlistCookieToken !== '' && $wishlistCookieToken !== '0') {
             $wishlist->setToken($wishlistCookieToken);
         }
 

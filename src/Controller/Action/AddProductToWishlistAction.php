@@ -45,8 +45,6 @@ final class AddProductToWishlistAction
 
     private ChannelContextInterface $channelContext;
 
-    private WishlistCookieTokenResolverInterface $wishlistCookieTokenResolver;
-
     public function __construct(
         ProductRepositoryInterface $productRepository,
         WishlistProductFactoryInterface $wishlistProductFactory,
@@ -54,8 +52,7 @@ final class AddProductToWishlistAction
         TranslatorInterface $translator,
         WishlistsResolverInterface $wishlistsResolver,
         ObjectManager $wishlistManager,
-        ChannelContextInterface $channelContext,
-        WishlistCookieTokenResolverInterface $wishlistCookieTokenResolver
+        ChannelContextInterface $channelContext
     ) {
         $this->productRepository = $productRepository;
         $this->wishlistProductFactory = $wishlistProductFactory;
@@ -64,7 +61,6 @@ final class AddProductToWishlistAction
         $this->wishlistsResolver = $wishlistsResolver;
         $this->wishlistManager = $wishlistManager;
         $this->channelContext = $channelContext;
-        $this->wishlistCookieTokenResolver = $wishlistCookieTokenResolver;
     }
 
     public function __invoke(Request $request): Response
@@ -93,7 +89,7 @@ final class AddProductToWishlistAction
             $channel = null;
         }
 
-        if (null !== $channel && $wishlist->getChannel()->getId() !== $channel->getId()) {
+        if ($channel instanceof \Sylius\Component\Channel\Model\ChannelInterface && $wishlist->getChannel()->getId() !== $channel->getId()) {
             throw new WishlistNotFoundException(
                 $this->translator->trans('bitbag_sylius_wishlist_plugin.ui.wishlist_for_channel_not_found')
             );

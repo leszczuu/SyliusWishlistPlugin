@@ -24,7 +24,7 @@ final class AddProductToSelectedWishlistHandler implements MessageHandlerInterfa
     ) {
     }
 
-    public function __invoke(AddProductToSelectedWishlistInterface $addProductToSelectedWishlist)
+    public function __invoke(AddProductToSelectedWishlistInterface $addProductToSelectedWishlist): void
     {
         $product = $addProductToSelectedWishlist->getProduct();
         $wishlist = $addProductToSelectedWishlist->getWishlist();

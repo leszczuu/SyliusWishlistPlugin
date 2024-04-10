@@ -33,13 +33,7 @@ final class WishlistVoter extends Voter
             self::UPDATE,
             self::DELETE,
         ];
-
-        if (!in_array($attribute, $attributes, true) ||
-            !$subject instanceof WishlistInterface) {
-            return false;
-        }
-
-        return true;
+        return in_array($attribute, $attributes, true) && $subject instanceof WishlistInterface;
     }
 
     /** @param string $attribute */
@@ -69,15 +63,10 @@ final class WishlistVoter extends Voter
 
     public function canUpdate(WishlistInterface $wishlist, ?ShopUserInterface $user): bool
     {
-        if (!$this->security->isGranted('ROLE_USER') && null === $wishlist->getShopUser()) {
+        if (!$this->security->isGranted('ROLE_USER') && !$wishlist->getShopUser() instanceof \Sylius\Component\Core\Model\ShopUserInterface) {
             return true;
         }
-
-        if ($this->security->isGranted('ROLE_USER') && $wishlist->getShopUser() === $user) {
-            return true;
-        }
-
-        return false;
+        return $this->security->isGranted('ROLE_USER') && $wishlist->getShopUser() === $user;
     }
 
     public function canDelete(WishlistInterface $wishlist, ?ShopUserInterface $user): bool

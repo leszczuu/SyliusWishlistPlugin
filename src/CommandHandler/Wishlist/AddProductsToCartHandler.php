@@ -58,7 +58,7 @@ final class AddProductsToCartHandler implements MessageHandlerInterface
 
     private function productIsStockSufficient(OrderItemInterface $product): bool
     {
-        if (null !== $this->availabilityChecker) {
+        if ($this->availabilityChecker instanceof \Sylius\Component\Inventory\Checker\AvailabilityCheckerInterface) {
             if ($this->availabilityChecker->isStockSufficient($product->getVariant(), $product->getQuantity())) {
                 return true;
             }

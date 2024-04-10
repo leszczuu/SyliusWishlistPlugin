@@ -46,7 +46,7 @@ final class WishlistContext implements WishlistContextInterface
 
         $user = $this->tokenUserResolver->resolve($token);
 
-        if (null === $cookieWishlistToken && null === $user) {
+        if (null === $cookieWishlistToken && !$user instanceof \Symfony\Component\Security\Core\User\UserInterface) {
             return $wishlist;
         }
 
@@ -60,12 +60,9 @@ final class WishlistContext implements WishlistContextInterface
             $channel = null;
         }
 
-        if (null !== $channel) {
-            if ($user instanceof ShopUserInterface) {
-                $wishlist = $this->wishlistRepository->findOneByShopUserAndChannel($user, $channel);
-
-                return $wishlist ?? $this->wishlistFactory->createForUserAndChannel($user, $channel);
-            }
+        if (null !== $channel && $user instanceof ShopUserInterface) {
+            $wishlist = $this->wishlistRepository->findOneByShopUserAndChannel($user, $channel);
+            return $wishlist ?? $this->wishlistFactory->createForUserAndChannel($user, $channel);
         }
 
         return $wishlist;

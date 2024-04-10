@@ -28,10 +28,6 @@ final class ProductProcessingChecker implements ProductProcessingCheckerInterfac
 
     private function isInStock(WishlistItemInterface $wishlistProduct): bool
     {
-        if (0 < $wishlistProduct->getOrderItemQuantity()) {
-            return true;
-        }
-
-        return false;
+        return 0 < $wishlistProduct->getOrderItemQuantity();
     }
 }
