@@ -81,7 +81,7 @@ final class ShowChosenWishlistAction
 
         if ($wishlist instanceof WishlistInterface && $user instanceof ShopUserInterface
         || $wishlist instanceof WishlistInterface && $wishlist->getToken() === $wishlistCookieToken
-            && null === $wishlist->getShopUser()) {
+            && !$wishlist->getShopUser() instanceof \Sylius\Component\Core\Model\ShopUserInterface) {
             $form = $this->createForm($wishlist);
 
             return new Response(

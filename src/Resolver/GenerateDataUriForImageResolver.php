@@ -38,6 +38,6 @@ final class GenerateDataUriForImageResolver implements GenerateDataUriForImageRe
         $pathToReadFile = self::PATH_TO_EMPTY_PRODUCT_IMAGE;
         $data = file_get_contents($pathToReadFile);
 
-        return 'data:image/' . 'png' . ';base64,' . base64_encode($data);
+        return 'data:image/png;base64,' . base64_encode($data);
     }
 }

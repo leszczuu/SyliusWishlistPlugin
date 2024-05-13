@@ -33,7 +33,6 @@ final class WishlistsResolver implements WishlistsResolverInterface
         private TokenUserResolverInterface $tokenUserResolver,
         MessageBusInterface $messageBus
     ) {
-        $this->messageBus = $messageBus;
     }
 
     public function resolve(): array
@@ -72,7 +71,7 @@ final class WishlistsResolver implements WishlistsResolverInterface
             $channel = null;
         }
 
-        if (0 === count($wishlists)) {
+        if ([] === $wishlists) {
             $createWishlist = new CreateWishlist($wishlistCookieToken, $channel?->getCode());
             /** @var WishlistInterface $wishlist */
             $wishlist = $this->handle($createWishlist);

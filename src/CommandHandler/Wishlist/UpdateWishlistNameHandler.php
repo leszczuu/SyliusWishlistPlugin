@@ -27,7 +27,7 @@ final class UpdateWishlistNameHandler
 
         $wishlistCookieToken = $this->wishlistCookieTokenResolver->resolve();
 
-        if ($this->wishlistRepository->findOneByTokenAndName($wishlistCookieToken, $updateWishlistName->getName())) {
+        if ($this->wishlistRepository->findOneByTokenAndName($wishlistCookieToken, $updateWishlistName->getName()) instanceof \BitBag\SyliusWishlistPlugin\Entity\WishlistInterface) {
             throw new WishlistNameIsTakenException();
         }
 

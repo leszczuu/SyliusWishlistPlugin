@@ -63,7 +63,7 @@ final class CreateWishlistHandler implements MessageHandlerInterface
         $channelCode = $createWishlist->getChannelCode();
         $channel = null !== $channelCode ? $this->channelRepository->findOneByCode($channelCode) : null;
 
-        if (null !== $channel) {
+        if ($channel instanceof \Sylius\Component\Channel\Model\ChannelInterface) {
             $wishlist->setChannel($channel);
         }
 

@@ -91,11 +91,6 @@ final class ImportWishlistFromCsvHandler implements MessageHandlerInterface
             'product' => $csvWishlistProduct->getProductId(),
             'code' => $csvWishlistProduct->getVariantCode(),
         ]);
-
-        if (null === $wishlistProduct) {
-            return false;
-        }
-
-        return true;
+        return null !== $wishlistProduct;
     }
 }

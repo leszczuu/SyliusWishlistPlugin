@@ -32,7 +32,7 @@ class Wishlist implements WishlistInterface
     protected ?ShopUserInterface $shopUser = null;
 
     /** @var WishlistTokenInterface|null */
-    protected $token;
+    protected \BitBag\SyliusWishlistPlugin\Entity\WishlistToken $token;
 
     protected ?ChannelInterface $channel;
 
@@ -40,7 +40,6 @@ class Wishlist implements WishlistInterface
     {
         $this->wishlistProducts = new ArrayCollection();
         $this->token = new WishlistToken();
-        $this->id = null;
 
         $this->createdAt = new \DateTime();
     }

@@ -29,7 +29,7 @@ final class RemoveWishlistHandler implements MessageHandlerInterface
         $token = $removeWishlist->getWishlistTokenValue();
         $wishlist = $this->wishlistRepository->findByToken($token);
 
-        if (null === $wishlist) {
+        if (!$wishlist instanceof \BitBag\SyliusWishlistPlugin\Entity\WishlistInterface) {
             throw new WishlistNotFoundException(
                 sprintf('The Wishlist %s does not exist', $token)
             );
